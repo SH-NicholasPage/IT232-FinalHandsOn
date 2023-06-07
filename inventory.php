@@ -9,15 +9,15 @@
     {
         $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         $price = filter_input(INPUT_POST, 'price', FILTER_VALIDATE_FLOAT);
-        $qoh;
-        $vendor;
+        $qoh; //TODO
+        $vendor; //TODO
 
-        $insert_query = "INSERT INTO PRODUCT (PROD_NAME, PROD_PRICE, PROD_QOH, PROD_VENDOR_PROVIDED) VALUES ('$name', '$price', '$qoh', '$vendor')";
-        $db->query($insert_query);
+        $insert_query = "INSERT INTO ".TABLE_NAME." (PROD_NAME, PROD_PRICE, PROD_QOH, PROD_VENDOR_PROVIDED) VALUES ('$name', '$price', '$qoh', '$vendor')";
+        $db->query($insert_query);//This will return true if the insert was successful, false otherwise
     }
 
-    $select_query = "SELECT * FROM PRODUCT";
-    $result; //Complete this instruction by querying the database
+    $select_query = "SELECT * FROM ".TABLE_NAME;
+    $result; //Complete this instruction by querying the database (hint: use the $db variable)
     $products = $result->fetch_all(MYSQLI_ASSOC);
 
     $db->close();
